@@ -2,29 +2,29 @@
 window.DEBUG ||= {}
 window.DEBUG.MI20001 ||= {}
 
-function zuoBiExec() {
-  window.DEBUG.ENABLE_MOUSE_SIGN ||= true
-  window.DEBUG.MI20001.STEP_PASS_INVALID ||= true
-  window.DEBUG.MI20001.STEP_PASS_BY_CORE_CHECK ||= true
-  window.DEBUG_MI21002_FF_STEP ||= true
-  console.info(' XzX :', '快速通關啟動!!!')
+function commonJumpExec() {
+  window.DEBUG.ENABLE_MOUSE_SIGN ||= true // 通用 (滑鼠簽名)
+  window.DEBUG.MI20001.STEP_PASS_INVALID ||= true // 新壽
+  window.DEBUG.MI20001.STEP_PASS_BY_CORE_CHECK ||= true // 新壽
+  window.DEBUG_MI21002_FF_STEP ||= true // 不知道哪家的
 }
 
-function signZuoBiExec() {
+function sklAllSignBiExec() {
   const nextBool = !window.DEBUG.NOTE.SIGN_ALL_FIELD
-  console.info(' XzX :', '已觸發切換:補辦一鍵簽名', nextBool ? '啟用' : '停用')
+  console.info(' XzX :', '新壽/一鍵簽名', nextBool ? '啟用' : '停用')
   window.DEBUG.NOTE.SIGN_ALL_FIELD = nextBool
 }
 
-function tomorrowExec() {
+function sklAutoTomorrowExec() {
   const nextBool = !window.DEBUG.MI20001.MAKE_IT_TOMORROW
-  console.info(' XzX :', '已觸發切換:今天就是明天', nextBool ? '啟用' : '停用')
+  console.info(' XzX :', '新壽/直接跨日', nextBool ? '啟用' : '停用')
   window.DEBUG.MI20001.MAKE_IT_TOMORROW = nextBool
 }
 
-executeSequence('qeqe', zuoBiExec)
-executeSequence('qdsd', signZuoBiExec)
-executeSequence('ivele', tomorrowExec)
+executeSequence('qeqe', commonJumpExec)
+executeSequence('qdsd', sklAllSignBiExec)
+executeSequence('ivele', sklAutoTomorrowExec)
+
 
 function executeSequence(str, execFunc) {
   // 將輸入字串轉換為小寫並拆分為字符陣列
